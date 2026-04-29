@@ -15,20 +15,20 @@ Use this folder as a DP map. The goal is not to memorize every solution, but to 
 
 | File | What It Covers |
 |---|---|
-| `01-dp-recognition.md` | How to identify DP problems |
-| `02-recursion-memo-tabulation.md` | Moving from brute force to memoization to bottom-up DP |
-| `03-one-dimensional-dp.md` | Linear DP, house robber, climbing stairs, Kadane-style thinking |
-| `04-grid-dp.md` | Matrix paths, obstacles, path sums, 2D transitions |
-| `05-knapsack-dp.md` | 0/1 knapsack, unbounded knapsack, subset sum, coin change |
-| `06-subsequence-string-dp.md` | LCS, edit distance, palindromes, subsequences |
-| `07-interval-dp.md` | Ranges, merging, bursting, printing, removing boxes |
-| `08-state-machine-dp.md` | Stock problems and mode-based DP |
-| `09-tree-dp.md` | DP on trees, include/exclude, rerooting idea |
-| `10-bitmask-dp.md` | Small-n set DP, TSP, assignment, visit-all problems |
-| `11-digit-dp.md` | Counting numbers under constraints |
-| `12-advanced-dp.md` | Probability DP, game DP, optimization tricks |
-| `JavaTemplates.java` | Java templates for common DP patterns |
-| `PracticeChecklist.md` | Problem list organized by pattern |
+| [01-dp-recognition.md](01-dp-recognition.md) | How to identify DP problems |
+| [02-recursion-memo-tabulation.md](02-recursion-memo-tabulation.md) | Moving from brute force to memoization to bottom-up DP |
+| [03-one-dimensional-dp.md](03-one-dimensional-dp.md) | Linear DP, house robber, climbing stairs, Kadane-style thinking |
+| [04-grid-dp.md](04-grid-dp.md) | Matrix paths, obstacles, path sums, 2D transitions |
+| [05-knapsack-dp.md](05-knapsack-dp.md) | 0/1 knapsack, unbounded knapsack, subset sum, coin change |
+| [06-subsequence-string-dp.md](06-subsequence-string-dp.md) | LCS, edit distance, palindromes, subsequences |
+| [07-interval-dp.md](07-interval-dp.md) | Ranges, merging, bursting, printing, removing boxes |
+| [08-state-machine-dp.md](08-state-machine-dp.md) | Stock problems and mode-based DP |
+| [09-tree-dp.md](09-tree-dp.md) | DP on trees, include/exclude, rerooting idea |
+| [10-bitmask-dp.md](10-bitmask-dp.md) | Small-n set DP, TSP, assignment, visit-all problems |
+| [11-digit-dp.md](11-digit-dp.md) | Counting numbers under constraints |
+| [12-advanced-dp.md](12-advanced-dp.md) | Probability DP, game DP, optimization tricks |
+| [JavaTemplates.java](JavaTemplates.java) | Java templates for common DP patterns |
+| [PracticeChecklist.md](PracticeChecklist.md) | Problem list organized by pattern |
 
 ## The Core DP Question
 
