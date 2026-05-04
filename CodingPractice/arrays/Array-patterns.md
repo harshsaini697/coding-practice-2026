@@ -946,24 +946,24 @@ Expanded:
 
 | Order | Pattern | Practice Problem |
 |---|---|---|
-| 1 | Basic Linear Scan | [1295. Find Numbers with Even Number of Digits](https://leetcode.com/problems/find-numbers-with-even-number-of-digits/) |
-| 4 | HashSet Seen Values | [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) |
-| 3 | HashMap Frequency | [1. Two Sum](https://leetcode.com/problems/two-sum/) |
-| 5 | Prefix Sum | [303. Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/) |
-| 6 | Prefix Sum + HashMap | [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) |
-| 7 | Kadane's Algorithm | [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) |
-| 8 | Two Pointers From Ends | [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) |
-| 9 | Same-Direction Two Pointers | [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) |
-| 10 | Fixed Sliding Window | [643. Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/) |
-| 11 | Variable Sliding Window | [209. Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/) |
-| 12 | Count Subarrays Ending at `i` | [3101. Count Alternating Subarrays](https://leetcode.com/problems/count-alternating-subarrays/) |
-| 15 | Binary Search Sorted Array | [704. Binary Search](https://leetcode.com/problems/binary-search/) |
-| 16 | Lower Bound Binary Search | [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/) |
-| 17 | Binary Search on Answer | [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) |
-| 13 | Monotonic Stack - Next Greater | [496. Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/) |
-| 14 | Monotonic Stack - Previous Smaller | [907. Sum of Subarray Minimums](https://leetcode.com/problems/sum-of-subarray-minimums/) |
-| 19 | Intervals | [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/) |
-| 21 | In-Place Marking | [448. Find All Numbers Disappeared in an Array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/) |
-| 22 | Cyclic Sort | [41. First Missing Positive](https://leetcode.com/problems/first-missing-positive/) |
-| 31 | Product Except Self | [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) |
-| 36 | Three Sum Pattern | [15. 3Sum](https://leetcode.com/problems/3sum/) |
+| 1 | [Basic Linear Scan](#1-basic-linear-scan) | [1295. Find Numbers with Even Number of Digits](https://leetcode.com/problems/find-numbers-with-even-number-of-digits/) |
+| 4 | [HashSet Seen Values](#4-hashset-seen-values) | [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) |
+| 3 | [HashMap Frequency](#3-hashmap-frequency) | [1. Two Sum](https://leetcode.com/problems/two-sum/) |
+| 5 | [Prefix Sum](#5-prefix-sum) | [303. Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/) |
+| 6 | [Prefix Sum + HashMap](#6-prefix-sum--hashmap) | [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) |
+| 7 | [Kadane's Algorithm](#7-kadanes-algorithm) | [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) |
+| 8 | [Two Pointers From Ends](#8-two-pointers-from-both-ends) | [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) |
+| 9 | [Same-Direction Two Pointers](#9-same-direction-two-pointers) | [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) |
+| 10 | [Fixed Sliding Window](#10-sliding-window---fixed-size) | [643. Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/) |
+| 11 | [Variable Sliding Window](#11-sliding-window---variable-size) | [209. Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/) |
+| 12 | [Count Subarrays Ending at `i`](#12-count-subarrays-ending-at-each-index) | [3101. Count Alternating Subarrays](https://leetcode.com/problems/count-alternating-subarrays/) |
+| 15 | [Binary Search Sorted Array](#15-binary-search-on-sorted-array) | [704. Binary Search](https://leetcode.com/problems/binary-search/) |
+| 16 | [Lower Bound Binary Search](#16-binary-search---lower-bound) | [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/) |
+| 17 | [Binary Search on Answer](#17-binary-search-on-answer) | [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) |
+| 13 | [Monotonic Stack - Next Greater](#13-monotonic-stack---next-greater-element) | [496. Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/) |
+| 14 | [Monotonic Stack - Previous Smaller](#14-monotonic-stack---previous-smaller) | [907. Sum of Subarray Minimums](https://leetcode.com/problems/sum-of-subarray-minimums/) |
+| 19 | [Intervals](#19-intervals) | [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/) |
+| 21 | [In-Place Marking](#21-in-place-marking) | [448. Find All Numbers Disappeared in an Array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/) |
+| 22 | [Cyclic Sort](#22-cyclic-sort) | [41. First Missing Positive](https://leetcode.com/problems/first-missing-positive/) |
+| 31 | [Product Except Self](#31-product-except-self) | [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) |
+| 36 | [Three Sum Pattern](#36-three-sum-pattern) | [15. 3Sum](https://leetcode.com/problems/3sum/) |
