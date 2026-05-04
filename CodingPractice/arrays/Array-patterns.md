@@ -891,3 +891,79 @@ Think:
 ```text
 cyclic sort / in-place marking
 ```
+
+# LeetCode Practice Problems By Pattern
+
+| # | Pattern | Practice Problem |
+|---|---|---|
+| 1 | Basic Linear Scan | [1295. Find Numbers with Even Number of Digits](https://leetcode.com/problems/find-numbers-with-even-number-of-digits/) |
+| 2 | Frequency Array | [1365. How Many Numbers Are Smaller Than the Current Number](https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/) |
+| 3 | HashMap Frequency | [1. Two Sum](https://leetcode.com/problems/two-sum/) |
+| 4 | HashSet Seen Values | [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) |
+| 5 | Prefix Sum | [303. Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/) |
+| 6 | Prefix Sum + HashMap | [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) |
+| 7 | Kadane's Algorithm | [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) |
+| 8 | Two Pointers From Ends | [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) |
+| 9 | Same-Direction Two Pointers | [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) |
+| 10 | Fixed Sliding Window | [643. Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/) |
+| 11 | Variable Sliding Window | [209. Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/) |
+| 12 | Count Subarrays Ending at `i` | [3101. Count Alternating Subarrays](https://leetcode.com/problems/count-alternating-subarrays/) |
+| 13 | Monotonic Stack - Next Greater | [496. Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/) |
+| 14 | Monotonic Stack - Previous Smaller | [907. Sum of Subarray Minimums](https://leetcode.com/problems/sum-of-subarray-minimums/) |
+| 15 | Binary Search Sorted Array | [704. Binary Search](https://leetcode.com/problems/binary-search/) |
+| 16 | Lower Bound Binary Search | [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/) |
+| 17 | Binary Search on Answer | [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) |
+| 18 | Sorting + Scan | [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/) |
+| 19 | Intervals | [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/) |
+| 20 | Difference Array | [370. Range Addition](https://leetcode.com/problems/range-addition/) |
+| 21 | In-Place Marking | [448. Find All Numbers Disappeared in an Array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/) |
+| 22 | Cyclic Sort | [41. First Missing Positive](https://leetcode.com/problems/first-missing-positive/) |
+| 23 | Matrix Traversal | [200. Number of Islands](https://leetcode.com/problems/number-of-islands/) |
+| 24 | Backtracking Subsets | [78. Subsets](https://leetcode.com/problems/subsets/) |
+| 25 | Backtracking Permutations | [46. Permutations](https://leetcode.com/problems/permutations/) |
+| 26 | Min / Max Heap | [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) |
+| 27 | Top K Elements | [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/) |
+| 28 | Quickselect | [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) |
+| 29 | DP on Array | [198. House Robber](https://leetcode.com/problems/house-robber/) |
+| 30 | Left / Right Precomputation | [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/) |
+| 31 | Product Except Self | [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) |
+| 32 | All Subarrays | [152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/) |
+| 33 | All Subsequences | [300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/) |
+| 34 | All Pairs | [1. Two Sum](https://leetcode.com/problems/two-sum/) |
+| 35 | All Triplets | [15. 3Sum](https://leetcode.com/problems/3sum/) |
+| 36 | Three Sum Pattern | [15. 3Sum](https://leetcode.com/problems/3sum/) |
+
+# Recommended Study Order
+
+Do these first to build the strongest array foundation:
+
+```text
+1, 4, 3, 5, 6, 7, 8, 9, 10, 11, 12,
+15, 16, 17, 13, 14, 19, 21, 22, 31, 36
+```
+
+Expanded:
+
+```text
+1. Basic Linear Scan
+4. HashSet Seen Values
+3. HashMap Frequency
+5. Prefix Sum
+6. Prefix Sum + HashMap
+7. Kadane's Algorithm
+8. Two Pointers From Ends
+9. Same-Direction Two Pointers
+10. Fixed Sliding Window
+11. Variable Sliding Window
+12. Count Subarrays Ending at i
+15. Binary Search Sorted Array
+16. Lower Bound Binary Search
+17. Binary Search on Answer
+13. Monotonic Stack - Next Greater
+14. Monotonic Stack - Previous Smaller
+19. Intervals
+21. In-Place Marking
+22. Cyclic Sort
+31. Product Except Self
+36. Three Sum Pattern
+```
