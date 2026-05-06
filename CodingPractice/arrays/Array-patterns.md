@@ -453,7 +453,38 @@ for (int i = 0; i < nums.length; i++) {
 
 ## 22. Cyclic Sort
 
-Use when numbers are in range `1...n`.
+Cyclic sort is useful when array values can be mapped directly to indexes.
+
+Most common mapping:
+
+```text
+value 1 belongs at index 0
+value 2 belongs at index 1
+value 3 belongs at index 2
+...
+value x belongs at index x - 1
+```
+
+So the core formula is:
+
+```java
+int correctIdx = nums[i] - 1;
+```
+
+Use this pattern when the question says something like:
+
+```text
+numbers are in range 1...n
+numbers are in range 0...n
+find missing number
+find duplicate number
+find all disappeared numbers
+find all duplicates
+find first missing positive
+array has length n and values point to indexes
+```
+
+### Core Template For Values `1...n`
 
 ```java
 int i = 0;
@@ -471,15 +502,287 @@ while (i < nums.length) {
 }
 ```
 
-Then scan:
+Why the `if` condition matters:
 
 ```java
-for (int j = 0; j < nums.length; j++) {
-    if (nums[j] != j + 1) {
-        return j + 1;
+nums[i] >= 1
+```
+
+Ignore values too small, like `0` or negative numbers.
+
+```java
+nums[i] <= nums.length
+```
+
+Ignore values too large. In an array of length `n`, only `1...n` can be placed.
+
+```java
+nums[i] != nums[correctIdx]
+```
+
+Only swap if the value is not already at its home. This also prevents infinite loops when duplicates exist.
+
+Do not increment `i` after a swap. The new value at `nums[i]` may also need to be moved.
+
+### First Missing Positive
+
+Use when values may include negatives, zero, duplicates, or numbers larger than `n`.
+
+Problem:
+
+[41. First Missing Positive](https://leetcode.com/problems/first-missing-positive/)
+
+```java
+class Solution {
+    public int firstMissingPositive(int[] nums) {
+        int i = 0;
+
+        while (i < nums.length) {
+            int correctIdx = nums[i] - 1;
+
+            if (
+                nums[i] >= 1 &&
+                nums[i] <= nums.length &&
+                nums[i] != nums[correctIdx]
+            ) {
+                int temp = nums[i];
+                nums[i] = nums[correctIdx];
+                nums[correctIdx] = temp;
+            } else {
+                i++;
+            }
+        }
+
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] != j + 1) {
+                return j + 1;
+            }
+        }
+
+        return nums.length + 1;
     }
 }
 ```
+
+Example:
+
+```text
+nums = [3, 4, -1, 1]
+after placement = [1, -1, 3, 4]
+index 1 should contain 2
+answer = 2
+```
+
+### Missing Number With Values `0...n`
+
+For values from `0...n`, the correct index is the value itself:
+
+```text
+value 0 belongs at index 0
+value 1 belongs at index 1
+value 2 belongs at index 2
+```
+
+Problem:
+
+[268. Missing Number](https://leetcode.com/problems/missing-number/)
+
+```java
+class Solution {
+    public int missingNumber(int[] nums) {
+        int i = 0;
+
+        while (i < nums.length) {
+            int correctIdx = nums[i];
+
+            if (nums[i] < nums.length && nums[i] != nums[correctIdx]) {
+                int temp = nums[i];
+                nums[i] = nums[correctIdx];
+                nums[correctIdx] = temp;
+            } else {
+                i++;
+            }
+        }
+
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] != j) {
+                return j;
+            }
+        }
+
+        return nums.length;
+    }
+}
+```
+
+### Find All Numbers Disappeared
+
+Place each number at its correct index, then collect the indexes where the expected value is missing.
+
+Problem:
+
+[448. Find All Numbers Disappeared in an Array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/)
+
+```java
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        int i = 0;
+
+        while (i < nums.length) {
+            int correctIdx = nums[i] - 1;
+
+            if (nums[i] != nums[correctIdx]) {
+                int temp = nums[i];
+                nums[i] = nums[correctIdx];
+                nums[correctIdx] = temp;
+            } else {
+                i++;
+            }
+        }
+
+        List<Integer> res = new ArrayList<>();
+
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] != j + 1) {
+                res.add(j + 1);
+            }
+        }
+
+        return res;
+    }
+}
+```
+
+Example:
+
+```text
+nums = [4,3,2,7,8,2,3,1]
+missing = [5,6]
+```
+
+### Find Duplicate Number
+
+If a number cannot be placed because its correct position already contains the same value, that value is a duplicate.
+
+Problem:
+
+[287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/)
+
+```java
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int i = 0;
+
+        while (i < nums.length) {
+            if (nums[i] == i + 1) {
+                i++;
+                continue;
+            }
+
+            int correctIdx = nums[i] - 1;
+
+            if (nums[i] == nums[correctIdx]) {
+                return nums[i];
+            }
+
+            int temp = nums[i];
+            nums[i] = nums[correctIdx];
+            nums[correctIdx] = temp;
+        }
+
+        return -1;
+    }
+}
+```
+
+Note: LeetCode 287 asks for no array modification. This cyclic sort version is useful for learning the pattern, but the official constraint is usually solved with Floyd's cycle detection or binary search on count.
+
+### Find All Duplicates
+
+After placing every possible number, any index whose value is not `j + 1` contains a duplicate.
+
+Problem:
+
+[442. Find All Duplicates in an Array](https://leetcode.com/problems/find-all-duplicates-in-an-array/)
+
+```java
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+        int i = 0;
+
+        while (i < nums.length) {
+            int correctIdx = nums[i] - 1;
+
+            if (nums[i] != nums[correctIdx]) {
+                int temp = nums[i];
+                nums[i] = nums[correctIdx];
+                nums[correctIdx] = temp;
+            } else {
+                i++;
+            }
+        }
+
+        List<Integer> res = new ArrayList<>();
+
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] != j + 1) {
+                res.add(nums[j]);
+            }
+        }
+
+        return res;
+    }
+}
+```
+
+### Set Mismatch
+
+One number appears twice and one number is missing. After cyclic sort, the mismatch appears at the index where `nums[j] != j + 1`.
+
+Problem:
+
+[645. Set Mismatch](https://leetcode.com/problems/set-mismatch/)
+
+```java
+class Solution {
+    public int[] findErrorNums(int[] nums) {
+        int i = 0;
+
+        while (i < nums.length) {
+            int correctIdx = nums[i] - 1;
+
+            if (nums[i] != nums[correctIdx]) {
+                int temp = nums[i];
+                nums[i] = nums[correctIdx];
+                nums[correctIdx] = temp;
+            } else {
+                i++;
+            }
+        }
+
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] != j + 1) {
+                int duplicate = nums[j];
+                int missing = j + 1;
+                return new int[] {duplicate, missing};
+            }
+        }
+
+        return new int[] {-1, -1};
+    }
+}
+```
+
+### Pattern Summary
+
+| Question Type | Value Range | Placement Rule | Final Scan |
+|---|---|---|---|
+| First missing positive | Any integers | Put `x` at `x - 1` only if `1 <= x <= n` | First `nums[i] != i + 1` |
+| Missing number | `0...n` | Put `x` at `x` only if `x < n` | First `nums[i] != i` |
+| Disappeared numbers | `1...n` | Put `x` at `x - 1` | Collect `i + 1` where missing |
+| Duplicate number | `1...n` | Put `x` at `x - 1` | Duplicate found when home already has `x` |
+| All duplicates | `1...n` | Put `x` at `x - 1` | Collect misplaced values |
+| Set mismatch | `1...n` | Put `x` at `x - 1` | Misplaced value is duplicate, expected value is missing |
 
 ## 23. Matrix Traversal
 
