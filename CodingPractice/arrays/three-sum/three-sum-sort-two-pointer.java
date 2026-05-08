@@ -33,3 +33,9 @@ class Solution {
         return res;
     }
 }
+
+// Time complexity: O(n^2)
+// Space complexity: O(1) if we don't consider the space for output list, otherwise O(n) for the output list.
+
+// The idea is to sort the array and then use two pointers to find pairs that sum up to the negative of the current element. 
+// We also need to skip duplicates to avoid repeating the same triplet in the output.
