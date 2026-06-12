@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A focused system design practice workspace for Capital One interviews.">
+  <title>System Design Lab | Capital One Prep</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="System Design Lab home">
+      <span class="brand-mark">SD</span>
+      <span>System Design Lab</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a class="active" href="#question-bank">Questions</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#drills">Failure drills</a>
+    </nav>
+    <button class="button button-dark" id="openQuestionModal">
+      <span aria-hidden="true">+</span> Add question
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="question">
+      <div class="eyebrow"><span></span> Capital One interview prep</div>
+      <div class="hero-grid">
+        <div>
+          <p class="question-number">Question 01 · Banking infrastructure</p>
+          <h1>Design a banking<br><em>transaction system.</em></h1>
+        </div>
+        <div class="hero-brief">
+          <p>Handle transfers and payments at scale, with fault tolerance and strong consistency. Make it highly available without compromising the ledger.</p>
+          <div class="meta-row">
+            <span>45 min</span>
+            <span>Senior / Lead</span>
+            <span>High frequency</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="question-bank" id="question-bank">
+      <div class="bank-heading">
+        <div>
+          <p class="kicker">Your practice set</p>
+          <h2>Question bank</h2>
+        </div>
+        <div class="bank-tools">
+          <p><strong id="questionCount">3 questions</strong> · Select a prompt to review or edit.</p>
+          <div>
+            <button class="text-button tool-button" id="importQuestions" type="button">Import JSON</button>
+            <button class="text-button tool-button" id="exportQuestions" type="button">Export JSON</button>
+            <input id="importFile" type="file" accept="application/json,.json" hidden>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-grid" id="questionGrid">
+        <button class="question-card active" type="button" data-question-id="banking-transactions">
+          <span class="question-card-top"><b>01</b><i>System design</i></span>
+          <strong>Banking transaction system</strong>
+          <p>Transfers, payments, fault tolerance, strong consistency, and high availability.</p>
+          <span class="question-card-action">Detailed answer below <b>↓</b></span>
+        </button>
+        <button class="question-card" type="button" data-question-id="credit-card-portal">
+          <span class="question-card-top"><b>02</b><i>System design</i></span>
+          <strong>Credit card portal</strong>
+          <p>Design a secure, scalable customer portal for card servicing and payments.</p>
+          <span class="question-card-action">Review prompt <b>→</b></span>
+        </button>
+        <button class="question-card" type="button" data-question-id="vcn-validation">
+          <span class="question-card-top"><b>03</b><i>Case interview</i></span>
+          <strong>VCN validation rules</strong>
+          <p>Apply digit-based business rules to a virtual card and transaction ID.</p>
+          <span class="question-card-action">Review handout <b>→</b></span>
+        </button>
+      </div>
+
+      <div class="prompt-preview" id="promptPreview" aria-live="polite">
+        <div class="prompt-preview-number" id="promptNumber">01</div>
+        <div class="question-workspace">
+          <div class="workspace-top">
+            <div>
+              <p class="kicker">Selected question</p>
+              <span id="editingStatus">Starter answer · saved locally when edited</span>
+            </div>
+            <div class="workspace-actions">
+              <button class="button button-light" id="resetQuestion" type="button">Reset</button>
+              <button class="button button-dark" id="editQuestion" type="button">Edit question</button>
+              <button class="button button-dark" id="saveQuestionChanges" type="button" hidden>Save changes</button>
+            </div>
+          </div>
+          <label class="editor-field compact">Category
+            <input id="promptCategory" readonly value="System design · Banking infrastructure">
+          </label>
+          <label class="editor-field">Title
+            <input id="promptTitle" readonly value="Design a banking transaction system">
+          </label>
+          <label class="editor-field">Interview prompt
+            <textarea id="promptText" readonly>Design a system that can handle banking transactions, including transfers and payments, at scale. Focus on fault tolerance and strong consistency. Explain how you would make the system highly available.</textarea>
+          </label>
+          <label class="editor-field compact">Focus areas <small>Separate with commas</small>
+            <input id="promptFocusInput" readonly value="Ledger integrity, Idempotency, Multi-region availability">
+          </label>
+          <label class="editor-field answer-field">Answer draft
+            <textarea id="promptAnswer" readonly></textarea>
+          </label>
+          <div class="prompt-focus" id="promptFocus">
+            <span>Ledger integrity</span><span>Idempotency</span><span>Multi-region availability</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-shell">
+      <aside class="rail" aria-label="Question outline">
+        <p class="rail-label">In this answer</p>
+        <a class="active" href="#framing"><span>01</span> Frame the problem</a>
+        <a href="#architecture"><span>02</span> Core architecture</a>
+        <a href="#consistency"><span>03</span> Consistency model</a>
+        <a href="#availability"><span>04</span> High availability</a>
+        <a href="#drills"><span>05</span> Failure drills</a>
+        <a href="#notes"><span>06</span> Your notes</a>
+        <div class="rail-progress">
+          <div>
+            <span>Answer readiness</span>
+            <strong id="readinessValue">68%</strong>
+          </div>
+          <div class="progress-track"><span id="progressBar"></span></div>
+          <button class="text-button" id="markReviewed">Mark as reviewed</button>
+        </div>
+      </aside>
+
+      <article>
+        <section class="answer-section" id="framing">
+          <div class="section-heading">
+            <span class="section-index">01</span>
+            <div>
+              <p class="kicker">Start here</p>
+              <h2>Frame the problem</h2>
+            </div>
+          </div>
+          <p class="lead">The ledger is the source of truth. Optimize everything around it, but never trade away the invariant that money cannot be created, lost, or moved twice.</p>
+          <div class="requirements-grid">
+            <div class="requirement-card">
+              <span class="card-icon">F</span>
+              <h3>Functional</h3>
+              <ul>
+                <li>Internal and external transfers</li>
+                <li>Bill and merchant payments</li>
+                <li>Transaction status and history</li>
+                <li>Reversals, refunds, reconciliation</li>
+              </ul>
+            </div>
+            <div class="requirement-card accent">
+              <span class="card-icon">N</span>
+              <h3>Non-functional</h3>
+              <ul>
+                <li>No double spend or duplicate debit</li>
+                <li>99.99% API availability target</li>
+                <li>Complete, immutable audit trail</li>
+                <li>Predictable p99 under peak load</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout">
+            <span>Interview move</span>
+            <p>Clarify whether transfers are within the bank or cross external rails. Internal transfers can be atomic; ACH, card, and wire flows are asynchronous workflows with pending and settled states.</p>
+          </div>
+        </section>
+
+        <section class="answer-section" id="architecture">
+          <div class="section-heading">
+            <span class="section-index">02</span>
+            <div>
+              <p class="kicker">The backbone</p>
+              <h2>Core architecture</h2>
+            </div>
+          </div>
+
+          <div class="architecture-card">
+            <div class="architecture-top">
+              <div>
+                <p class="diagram-label">Synchronous write path</p>
+                <h3>Keep the critical path narrow</h3>
+              </div>
+              <span class="status-pill"><i></i> Strongly consistent</span>
+            </div>
+            <div class="diagram" aria-label="Transaction architecture diagram">
+              <div class="node entry"><small>Edge</small><strong>API Gateway</strong><span>Auth · rate limit</span></div>
+              <div class="connector"><span>1</span></div>
+              <div class="node service"><small>Stateless</small><strong>Transaction API</strong><span>Validate · dedupe</span></div>
+              <div class="connector"><span>2</span></div>
+              <div class="node ledger"><small>Source of truth</small><strong>Ledger Service</strong><span>Post balanced entries</span></div>
+              <div class="connector"><span>3</span></div>
+              <div class="node database"><small>Consensus</small><strong>Ledger DB</strong><span>Serializable writes</span></div>
+            </div>
+            <div class="async-row">
+              <span>Transactional outbox</span>
+              <div class="dash"></div>
+              <span>Event bus</span>
+              <div class="dash"></div>
+              <span>Notifications · fraud · analytics</span>
+            </div>
+          </div>
+
+          <div class="principles">
+            <div>
+              <span>01</span>
+              <h3>Double-entry ledger</h3>
+              <p>Every transfer writes equal debit and credit entries. Balances are projections of immutable ledger entries, not mutable truth.</p>
+            </div>
+            <div>
+              <span>02</span>
+              <h3>Idempotent commands</h3>
+              <p>A client-generated key has a unique database constraint. Retries return the original result instead of moving funds again.</p>
+            </div>
+            <div>
+              <span>03</span>
+              <h3>Outbox events</h3>
+              <p>Commit the ledger and event intent together. Publish asynchronously with at-least-once delivery and idempotent consumers.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="answer-section split-section" id="consistency">
+          <div>
+            <div class="section-heading">
+              <span class="section-index">03</span>
+              <div>
+                <p class="kicker">Protect the money</p>
+                <h2>Consistency model</h2>
+              </div>
+            </div>
+            <p class="lead small">Serialize only where financial invariants require it. Let everything else scale independently.</p>
+          </div>
+          <div class="decision-list">
+            <div class="decision">
+              <span class="decision-tag must">Must</span>
+              <div><strong>Ledger writes</strong><p>Serializable transaction or consensus-backed conditional writes.</p></div>
+            </div>
+            <div class="decision">
+              <span class="decision-tag must">Must</span>
+              <div><strong>Balance checks</strong><p>Read from the leader or use a locked versioned balance row.</p></div>
+            </div>
+            <div class="decision">
+              <span class="decision-tag eventual">Eventual</span>
+              <div><strong>History & notifications</strong><p>Materialized views may lag; expose a pending state to users.</p></div>
+            </div>
+            <div class="decision">
+              <span class="decision-tag eventual">Eventual</span>
+              <div><strong>Analytics & reporting</strong><p>Consume events asynchronously without adding ledger latency.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="answer-section" id="availability">
+          <div class="section-heading">
+            <span class="section-index">04</span>
+            <div>
+              <p class="kicker">Stay up safely</p>
+              <h2>High availability</h2>
+            </div>
+          </div>
+          <div class="availability-grid">
+            <div class="availability-main">
+              <h3>Active-active compute.<br>Single-writer ownership.</h3>
+              <p>Run stateless APIs across multiple zones and regions, but route each account shard to one consensus leader at a time. This avoids conflicting debits while preserving fast regional failover.</p>
+              <div class="region-map">
+                <div class="region active">
+                  <span>Region A</span>
+                  <strong>Leader</strong>
+                  <small>3 availability zones</small>
+                </div>
+                <div class="replication"><span>Quorum replication</span><i></i></div>
+                <div class="region">
+                  <span>Region B</span>
+                  <strong>Follower</strong>
+                  <small>Warm traffic + failover</small>
+                </div>
+              </div>
+            </div>
+            <div class="tradeoff-card">
+              <p class="kicker">The honest trade-off</p>
+              <h3>During a partition, fail closed for money movement.</h3>
+              <p>Reads can remain available from safe snapshots, but a region without quorum must not accept ledger writes. “Pending” is better than an incorrect balance.</p>
+              <div class="tradeoff-footer"><span>CP for ledger</span><span>AP around it</span></div>
+            </div>
+          </div>
+          <div class="checklist">
+            <label><input type="checkbox" checked> Multi-AZ consensus replicas</label>
+            <label><input type="checkbox" checked> Health-based traffic routing</label>
+            <label><input type="checkbox" checked> Bounded retries + jitter</label>
+            <label><input type="checkbox" checked> Circuit breakers and backpressure</label>
+            <label><input type="checkbox" checked> Automated reconciliation</label>
+            <label><input type="checkbox" checked> Tested regional failover</label>
+          </div>
+        </section>
+
+        <section class="answer-section" id="drills">
+          <div class="section-heading">
+            <span class="section-index">05</span>
+            <div>
+              <p class="kicker">Push the design</p>
+              <h2>Failure drills</h2>
+            </div>
+          </div>
+          <div class="accordion">
+            <details open>
+              <summary><span>Service crashes after commit, before response</span><i></i></summary>
+              <p>The retry uses the same idempotency key, finds the durable transaction result, and returns success without posting new entries.</p>
+            </details>
+            <details>
+              <summary><span>Message broker is unavailable</span><i></i></summary>
+              <p>The ledger transaction still completes. The committed outbox record is retried until published; downstream consumers deduplicate by event ID.</p>
+            </details>
+            <details>
+              <summary><span>Primary database node fails</span><i></i></summary>
+              <p>The consensus group elects a leader from a quorum. Clients retry with bounded backoff. Transactions without a confirmed commit are safely replayed by idempotency key.</p>
+            </details>
+            <details>
+              <summary><span>Two accounts live on different shards</span><i></i></summary>
+              <p>Prefer co-locating common internal transfers. Otherwise use a durable workflow with holds, debit, credit, and compensation states rather than fragile distributed locking.</p>
+            </details>
+          </div>
+        </section>
+
+        <section class="answer-section notes-section" id="notes">
+          <div class="section-heading">
+            <span class="section-index">06</span>
+            <div>
+              <p class="kicker">Make it yours</p>
+              <h2>Your notes</h2>
+            </div>
+          </div>
+          <textarea id="personalNotes" placeholder="Capture your opening, trade-offs, or questions to revisit..."></textarea>
+          <div class="notes-footer">
+            <span id="saveStatus">Saved locally</span>
+            <button class="button button-light" id="clearNotes">Clear notes</button>
+          </div>
+        </section>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand"><span class="brand-mark">SD</span><span>System Design Lab</span></div>
+    <p>Practice the trade-offs. Defend the invariants.</p>
+    <a href="#question">Back to top ↑</a>
+  </footer>
+
+  <dialog id="questionModal">
+    <form method="dialog" id="questionForm">
+      <div class="modal-top">
+        <div><p class="kicker">Question bank</p><h2>Add a new prompt</h2></div>
+        <button class="icon-button" value="cancel" aria-label="Close modal">×</button>
+      </div>
+      <label>Question title<input id="newQuestionTitle" required placeholder="e.g. Design a fraud detection platform"></label>
+      <label>Focus area<select id="newQuestionCategory"><option>Banking infrastructure</option><option>Data platform</option><option>Customer experience</option><option>Security & fraud</option></select></label>
+      <label>Prompt<textarea id="newQuestionPrompt" required placeholder="What should the candidate design and prioritize?"></textarea></label>
+      <label>Starter answer<textarea id="newQuestionAnswer" placeholder="Add an outline now, or leave blank and fill it in later."></textarea></label>
+      <div class="modal-actions">
+        <button class="button button-light" value="cancel">Cancel</button>
+        <button class="button button-dark" value="default" id="saveQuestion">Save question</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status">Question saved to your local bank.</div>
+  <script src="app.js"></script>
+</body>
+</html>
