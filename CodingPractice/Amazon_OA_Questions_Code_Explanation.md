@@ -316,6 +316,53 @@ Never expand every coordinate.
 
 Useful when coordinates are very large.
 
+## Code
+
+```
+public static long maxMoney(int k, int[][] segments) {
+
+    int maxIndex = 0;
+
+    for (int[] s : segments)
+        maxIndex = Math.max(maxIndex, s[1]);
+
+    long[] diff = new long[maxIndex + 2];
+
+    for (int[] s : segments) {
+
+        diff[s[0]] += s[2];
+
+        diff[s[1] + 1] -= s[2];
+    }
+
+    long[] bags = new long[maxIndex + 1];
+
+    long running = 0;
+
+    for (int i = 1; i <= maxIndex; i++) {
+        running += diff[i];
+        bags[i] = running;
+    }
+
+    long window = 0;
+
+    for (int i = 1; i <= Math.min(k, maxIndex); i++)
+        window += bags[i];
+
+    long answer = window;
+
+    for (int i = k + 1; i <= maxIndex; i++) {
+
+        window += bags[i];
+        window -= bags[i - k];
+
+        answer = Math.max(answer, window);
+    }
+
+    return answer;
+}
+```
+
 ------------------------------------------------------------------------
 
 # 6. Category Hierarchy Design
