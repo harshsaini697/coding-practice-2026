@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 import java.util.stream.IntStream;
 
 class Solution {
@@ -27,7 +27,7 @@ class Solution {
                 Arrays.stream(boxes, 0, i),
                 Arrays.stream(boxes, j, boxes.length)
             ).toArray();
-            int score = groupSize * groupSize + removeBoxes(newBoxes);
+            int score = groupSize * groupSize + solve(newBoxes);
             best = Math.max(score, best);
         }
 
