@@ -298,6 +298,46 @@ Overall complexity
 
 # 5. Maximum Coins from Segments
 
+Maximum Money from K Consecutive Bags
+Problem
+
+You're given:
+
+k = number of consecutive bags to take.
+segments[i] = [start, end, value]
+Every bag in the inclusive range [start, end] contains value money.
+Bags not covered by any segment contain 0.
+
+Find the maximum money obtainable by taking exactly k consecutive bags.
+
+Example:
+```
+k = 5
+
+segments =
+[
+ [1,4,2],
+ [6,6,5],
+ [7,7,7],
+ [9,10,1]
+]
+
+The bag values are:
+
+Index : 1 2 3 4 5 6 7 8 9 10
+Value : 2 2 2 2 0 5 7 0 1 1
+
+Choosing bags 3–7:
+
+2 + 2 + 0 + 5 + 7 = 16
+```
+
+Answer:
+
+```
+16
+```
+
 ## Pattern
 
 -   Difference Array
